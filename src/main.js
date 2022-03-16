@@ -3,11 +3,16 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 
+import "./assets/tailwind.css";
+
+import "./assets/element-variables.scss";
+
+import ElementUI from "element-ui";
 import locale from "element-ui/lib/locale/lang/en";
-import Element from "element-ui";
+
+Vue.use(ElementUI, { locale });
 
 Vue.config.productionTip = false;
-Vue.use(Element, { locale });
 
 new Vue({
   store,
