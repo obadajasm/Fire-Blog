@@ -1,6 +1,10 @@
 <template>
   <div class="my-6">
-    <el-form ref="form" :model="form" :rules="rules" class="custom-form">
+    <p class="max-w-[400px]">
+      Currently adding a new Article is not supported due to a serve error (last
+      tested 18/3 12:26 AM)
+    </p>
+    <el-form ref="form" :model="form" :rules="rules" class="custom-form mt-2">
       <el-form-item prop="title">
         <el-input v-model="form.title" placeholder="title"></el-input>
       </el-form-item>
@@ -20,16 +24,13 @@
           :rows="6"
         ></el-input>
       </el-form-item>
-      <el-form-item
-        label="Add some tags"
-        class="flex flex-col justify-start items-start"
-      >
+      <el-form-item class="flex flex-col justify-start items-start">
         <el-select
           v-model="form.tagList"
           multiple
           filterable
           allow-create
-          style="width: 300px"
+          style="width: 400px"
           placeholder="tags"
         >
           <el-option

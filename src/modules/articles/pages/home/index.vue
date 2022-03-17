@@ -5,7 +5,7 @@
         <el-row class="mt-6">
           <articles-list v-if="articles.length > 0" :articles="articles" />
           <div v-else>
-            <p>No articles are here... yet.</p>
+            <p>No articles here... yet.</p>
           </div>
         </el-row>
       </div>

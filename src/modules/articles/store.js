@@ -55,7 +55,6 @@ export default {
         const isLoggedIn = await dispatch("Auth/isLoggedIn", null, {
           root: true,
         });
-        console.log(qp, qp?.getAll);
         const ep =
           isLoggedIn && !qp?.getAll
             ? ArticlesService.getArticlesFeed(qp)

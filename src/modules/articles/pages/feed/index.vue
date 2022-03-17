@@ -16,7 +16,7 @@
           <el-row class="flex justify-center">
             <articles-list v-if="articles.length > 0" :articles="articles" />
             <div v-else>
-              <p class="text-center h-1/2">No articles are here... yet.</p>
+              <p class="text-center h-1/2">No articles here... yet.</p>
             </div>
           </el-row>
 
@@ -88,7 +88,7 @@ export default {
     fetchData() {
       this.getArticles({
         ...this.pagination,
-        getAll: this.tab !== "Your Feed",
+        getAll: this.tab !== "feed",
       });
     },
     handleTabChange() {

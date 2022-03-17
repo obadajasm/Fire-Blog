@@ -2,7 +2,7 @@
   <el-card
     shadow="hover"
     @click="$router.push('/articles/')"
-    class="mb-2 max-w-lg hover:cursor-pointer"
+    class="mb-2 max-w-lg"
   >
     <el-row>
       <div class="flex items-center justify-between w-full">
@@ -35,9 +35,6 @@
         </div>
       </div>
     </el-row>
-    <el-button type="text" @click="$router.push(`/articles/${article.slug}`)">
-      more?</el-button
-    >
   </el-card>
 </template>
 

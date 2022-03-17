@@ -19,6 +19,11 @@ export function addNotificationInterceptor(axiosInstance) {
     let text =
         Object.entries(response.data?.errors ?? {})?.[0]?.join(" ") ?? "",
       type;
+    if (text === "") {
+      if (typeof response?.data === "string") {
+        text = response?.data ?? "";
+      }
+    }
     if (
       text === "" ||
       response.status < 200 ||
