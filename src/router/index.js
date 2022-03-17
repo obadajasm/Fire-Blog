@@ -1,29 +1,38 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import store from "@/store";
+import authHelper from "@/utils/auth-helper";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+import routes from "./routes";
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+const authWhiteList = ["/login", "/signup", "/home"];
+const whiteList = [...authWhiteList];
+
+router.beforeEach((to, from, next) => {
+  store
+    .dispatch("Auth/getAccessToken")
+    .then(() => {
+      if (authWhiteList.some((e) => to.path.startsWith(e))) {
+        // if is logged in, redirect to feed page
+        next("/");
+      } else {
+        next();
+      }
+    })
+    .catch(() => {
+      if (whiteList.some((e) => to.path.startsWith(e))) {
+        next();
+      } else {
+        authHelper.reset();
+        next("/login");
+      }
+    });
+});
+
+export default router;
