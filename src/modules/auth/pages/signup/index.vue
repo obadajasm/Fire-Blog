@@ -21,14 +21,9 @@ export default {
   },
   methods: {
     ...mapActions("Auth/Signup", ["signup"]),
-    handleSubmit(payload) {
-      this.signup(payload)
-        .then(() => {
-          this.$router.push("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    async handleSubmit(payload) {
+      await this.signup(payload);
+      this.$router.push("/");
     },
   },
 };

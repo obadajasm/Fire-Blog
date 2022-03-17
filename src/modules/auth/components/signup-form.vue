@@ -1,14 +1,18 @@
 <template>
   <div>
     <el-form ref="form" :model="form" :rules="rules" class="custom-form">
-      <el-form-item label="Username" prop="username">
+      <el-form-item label="Username" prop="username" label-width="80px">
         <el-input v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item label="Email" prop="email">
+      <el-form-item label="Email" prop="email" label-width="80px">
         <el-input v-model="form.email"></el-input>
       </el-form-item>
       <el-form-item label="Password" prop="password">
-        <el-input v-model="form.password" type="password"></el-input>
+        <el-input
+          v-model="form.password"
+          type="password"
+          show-password
+        ></el-input>
       </el-form-item>
 
       <el-form-item class="mt-10">

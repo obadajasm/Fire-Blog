@@ -1,16 +1,14 @@
-import { unauthenticatedAxiosInstance } from '@/utils/axios';
-import * as ep from './endpoints';
+import { unauthenticatedAxiosInstance } from "@/utils/axios";
+import * as ep from "./endpoints";
 
 export default class Service {
-	static login(qp = {}) {
-		return unauthenticatedAxiosInstance.post(ep.LOGIN, qp).then((res) => {
-			return res.data;
-		});
-	}
+  static async login(qp = {}) {
+    const res = await unauthenticatedAxiosInstance.post(ep.LOGIN, qp);
+    return res.data;
+  }
 
-	static signup(qp = {}) {
-		return unauthenticatedAxiosInstance.post(ep.SIGNUP, qp).then((res) => {
-			return res.data;
-		});
-	}
+  static async signup(qp = {}) {
+    const res = await unauthenticatedAxiosInstance.post(ep.SIGNUP, qp);
+    return res.data;
+  }
 }

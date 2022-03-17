@@ -1,9 +1,12 @@
 import AuthModuleRoutes from "@/modules/auth/routes";
+
+import ArticlesModuleRoutes from "@/modules/articles/routes";
 const routes = [
   {
     path: "/",
     component: () =>
       import(/* webpackChunkName: "MainLayout" */ "@/layouts/main"),
+    children: [ArticlesModuleRoutes],
   },
   {
     path: "/",

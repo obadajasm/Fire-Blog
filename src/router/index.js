@@ -12,27 +12,24 @@ const router = new VueRouter({
 });
 
 const authWhiteList = ["/login", "/signup", "/home"];
-const whiteList = [...authWhiteList];
+const whiteList = [...authWhiteList, "/articles"];
 
-router.beforeEach((to, from, next) => {
-  store
-    .dispatch("Auth/getAccessToken")
-    .then(() => {
-      if (authWhiteList.some((e) => to.path.startsWith(e))) {
-        // if is logged in, redirect to feed page
-        next("/");
-      } else {
-        next();
-      }
-    })
-    .catch(() => {
-      if (whiteList.some((e) => to.path.startsWith(e))) {
-        next();
-      } else {
-        authHelper.reset();
-        next("/login");
-      }
-    });
+router.beforeEach(async (to, from, next) => {
+  try {
+    await store.dispatch("Auth/getAccessToken");
+    if (authWhiteList.some((e) => to.path.startsWith(e))) {
+      next("/feed");
+    } else {
+      next();
+    }
+  } catch (error) {
+    if (whiteList.some((e) => to.path.startsWith(e))) {
+      next();
+    } else {
+      authHelper.reset();
+      next("/home");
+    }
+  }
 });
 
 export default router;

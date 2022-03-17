@@ -6,6 +6,14 @@ export default {
   },
   watch: {
     isLoading(isLoading) {
+      this.handleLoader(isLoading);
+    },
+    loading(isLoading) {
+      this.handleLoader(isLoading);
+    },
+  },
+  methods: {
+    handleLoader(isLoading) {
       if (isLoading) {
         this.loader = this.$loading({
           lock: true,

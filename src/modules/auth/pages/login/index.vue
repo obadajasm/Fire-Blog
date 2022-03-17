@@ -21,14 +21,9 @@ export default {
   },
   methods: {
     ...mapActions("Auth/Login", ["login"]),
-    handleSubmit(payload) {
-      this.login(payload)
-        .then(() => {
-          this.$router.push("/");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    async handleSubmit(payload) {
+      await this.login(payload);
+      this.$router.push("/");
     },
   },
 };
