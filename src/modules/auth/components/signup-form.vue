@@ -7,7 +7,7 @@
       <el-form-item label="Email" prop="email" label-width="80px">
         <el-input v-model="form.email"></el-input>
       </el-form-item>
-      <el-form-item label="Password" prop="password">
+      <el-form-item label="Password" prop="password" label-width="80px">
         <el-input
           v-model="form.password"
           type="password"
