@@ -19,7 +19,7 @@
         <el-button type="primary" @click="onSubmit">Signup</el-button>
       </el-form-item>
 
-      <div class="flex justify-end items-center gap-x-1 text-sm">
+      <div class="gap-x-1 text-sm">
         <span class="text-gray-500">Already registered?</span>
         <!-- Doesn't have account yet -->
         <el-button type="text" @click="$emit('login')"> Login </el-button>
