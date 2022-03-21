@@ -1,5 +1,7 @@
 # fire_blog
 
+
+Minimal version of https://demo.realworld.io using https://api.realworld.io/api-docs/ as backend service.
 ## Project setup
 ```
 npm install
